@@ -4,6 +4,11 @@ function mayuscula(nombre) {
   //La función recibe un nombre y debe devolver el mismo que recibe pero con su primer letra en mayúscula
   //ej: Recibe "mario" ----> Devuelve "Mario"
   //Tu código:
+  let arr= nombre.split("")
+  let  primerLetra= arr.shift()
+  let mayuscula= primerLetra.toUpperCase()
+   arr.unshift(mayuscula)
+   return arr.join("")
 }
 
 function invocarCallback(cb) {
@@ -41,6 +46,9 @@ function filter(array) {
   //Filtrar todos los elementos del array que comiencen con la letra "a".
   //Devolver un nuevo array con los elementos que cumplen la condición
   //Tu código:
+  array.filter((element,i)=>{
+    return element[i]==="a"
+  })
 }
 
 // No modificar nada debajo de esta línea
