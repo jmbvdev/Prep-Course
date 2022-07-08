@@ -19,6 +19,15 @@ function numberOfCharacters(string) {
   //en formato par clave-valor.
   //Ej: Recibe ---> "adsjfdsfsfjsdjfhacabcsbajda" || Devuelve ---> { a: 5, b: 2, c: 2, d: 4, f: 4, h:1, j: 4, s: 5 }
   //Escribe tu código aquí
+  let objeto={};
+  for (let i = 0; i < string.length; i++) {
+    if (objeto.hasOwnProperty(string[i])) {
+      objeto[string[i]]= objeto[string[i]]+1
+    } else {
+      objeto[string[i]]=1
+    }
+  }
+  return objeto
 }
 
 function capToFront(s) {
@@ -26,6 +35,19 @@ function capToFront(s) {
   //al principio de la palabra.
   //Ejemplo: soyHENRY -> HENRYsoy
   //Escribe tu código aquí
+  let mayuscula = s.toUpperCase().split("")
+  let arr= s.split("")
+  let arrMayuscula=[]
+  let cut=[]
+  for (let i = 0; i < arr.length; i++) {
+      if (mayuscula[i]===arr[i]) {
+          arrMayuscula.push(arr[i])
+      }else{
+          cut.push(arr[i])
+      }
+      
+  }
+  return arrMayuscula.join("") + cut.join("")
 }
 
 function asAmirror(str) {
@@ -76,31 +98,13 @@ function sortArray(arr) {
   //La función recibe una matriz de strings. Ordena la matriz en orden creciente de longitudes de cadena
   //Ej: Recibe ---> ["You", "are", "beautiful", "looking"] || Devuelve ---> [“You", "are", "looking", "beautiful"]
   //Escribe tu código aquí
-  let num = [];
-  let array = [];
-  let bigger = 0;
 
-  for (let i = 0; i < arr.length; i++) {
-    let largo = arr[i].length;
-    num.push(largo);
-    bigger += Math.max(...num);
+  arr.sort(function(a, b) {
+    return a.length - b.length
+});
+return(arr)
 
-    num.sort(function (a, b) {
-      return a - b;
-    });
-  }
-
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i].length < num[num.length - 1]) {
-      array.push(arr[i]);
-    }
-  }
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i].length === num[num.length - 1]) {
-      array.push(arr[i]);
-    }
-  }
-  return array;
+  
 }
 
 function buscoInterseccion(arreglo1, arreglo2) {
@@ -109,6 +113,16 @@ function buscoInterseccion(arreglo1, arreglo2) {
   //Si no tienen elementos en común, retornar un arreglo vacío.
   //Aclaración: los arreglos no necesariamente tienen la misma longitud
   //Escribe tu código aquí
+  let match=[]
+  for (let i = 0; i < arreglo1.length; i++) {
+    for (let j = 0; j < arreglo2.length; j++) {
+      if (arreglo1[i]===arreglo2[j]) {
+        match.push(arreglo1[i])
+      }
+      
+    }
+  }
+  return match
 }
 
 // No modificar nada debajo de esta línea
